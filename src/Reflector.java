@@ -4,6 +4,7 @@ import java.util.Map;
 /**
  * @author Eliezer Meth
  * Start Date: 2020-09-24
+ * Last Modified: 2020-11-04
  *
  * This class is to simulate a reflector that could be inserted into the machine.
  *
@@ -57,8 +58,6 @@ public class Reflector implements Wiring
      */
     public int indexOf(int letter)
     {
-        int index = -1; // set to throw error
-
         // search array and terminate when found
         for (int i = 0; i < reflector.length; i++)
             if (reflector[i] == letter)
@@ -66,7 +65,8 @@ public class Reflector implements Wiring
                 return i;
             }
 
-        return index;
+        // only returned if letter was not in reflector
+        return -1;
     }
 
     /**
