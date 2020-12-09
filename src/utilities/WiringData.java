@@ -1,3 +1,7 @@
+package utilities;
+
+import machine.GearConstruction;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,7 +22,7 @@ public class WiringData
     /**
      * This method contains the information for: Enigma I
      * This version was used by: Army, Luftwaffe (Air Force)
-     * @return Map<String, GearConstruction[]> of gear data.
+     * @return Map<String, machine.GearConstruction[]> of gear data.
      */
     public static Map<String, GearConstruction[]> Enigma1()
     {
@@ -48,7 +52,7 @@ public class WiringData
     /**
      * This method contains the information for: Enigma M3
      * This version was used by: Kriegsmarine (Navy)
-     * @return Map<String, GearConstruction[]> of gear data.
+     * @return Map<String, machine.GearConstruction[]> of gear data.
      */
     public static Map<String, GearConstruction[]> EnigmaM3()
     {

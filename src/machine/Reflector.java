@@ -1,3 +1,8 @@
+package machine;
+
+import interfaces.Wiring;
+import utilities.Utilities;
+
 import java.util.Arrays;
 import java.util.Map;
 
@@ -25,7 +30,7 @@ public class Reflector implements Wiring
     /**
      * Constructor to select correct reflector.
      * @param reflectorSelected String (A+) representing the selected reflector.
-     * @param selection Map<String, GearConstruction[]> for rotors and reflectors for a version of the Enigma.
+     * @param selection Map<String, machine.GearConstruction[]> for rotors and reflectors for a version of the Enigma.
      */
     public Reflector(String reflectorSelected, Map<String, GearConstruction[]> selection)
     {

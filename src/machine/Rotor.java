@@ -1,3 +1,8 @@
+package machine;
+
+import interfaces.Wiring;
+import utilities.Utilities;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Map;
@@ -35,7 +40,7 @@ public class Rotor implements Wiring
      * @param rotorSelected String representing which rotor was selected for this instance.
      * @param ringSetting String representing the ring setting for this rotor.
      * @param initialPosition String representing letter of rotor on top at the start.
-     * @param selection Map<String, GearConstruction[]> for rotors and reflectors for a version of the Enigma.
+     * @param selection Map<String, machine.GearConstruction[]> for rotors and reflectors for a version of the Enigma.
      */
     public Rotor(String rotorSelected, String ringSetting, String initialPosition, Map<String, GearConstruction[]> selection)
     {
@@ -47,7 +52,7 @@ public class Rotor implements Wiring
     /**
      * Constructor to allow the rotor to be selected at its default settings.
      * @param rotorSelected String representing which rotor was selected for this instance.
-     * @param selection Map<String, GearConstruction[]> for rotors and reflectors for a version of the Enigma.
+     * @param selection Map<String, machine.GearConstruction[]> for rotors and reflectors for a version of the Enigma.
      */
     public Rotor(String rotorSelected, Map<String, GearConstruction[]> selection)
     {

@@ -1,3 +1,8 @@
+package machine;
+
+import interfaces.Wiring;
+import utilities.Utilities;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 

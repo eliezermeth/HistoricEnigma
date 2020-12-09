@@ -1,4 +1,7 @@
+package machine;
+
 import com.sun.istack.internal.NotNull;
+import interfaces.Model;
 
 /**
  * @author Eliezer Meth
@@ -19,8 +22,8 @@ public class ConstructedMilitaryModel implements Model
     /**
      * Constructor for model.  Must contain the rotors, reflector, and plugboard.
      * @param rotors Array of rotors to be inserted into the machine.
-     * @param reflector Reflector to be inserted into the machine.
-     * @param plugboard Plugboard to be inserted into the machine.
+     * @param reflector machine.Reflector to be inserted into the machine.
+     * @param plugboard machine.Plugboard to be inserted into the machine.
      */
     public ConstructedMilitaryModel(@NotNull Rotor[] rotors, @NotNull Reflector reflector, @NotNull Plugboard plugboard)
     {

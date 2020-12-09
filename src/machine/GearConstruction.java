@@ -1,3 +1,5 @@
+package machine;
+
 import java.util.LinkedList;
 
 /**
@@ -10,7 +12,7 @@ import java.util.LinkedList;
 
 public class GearConstruction
 {
-    // Wiring (for either rotor or reflector)
+    // interfaces.Wiring (for either rotor or reflector)
     private final int[] wirings = new int[26]; // will be 26 letters
 
     // For rotor

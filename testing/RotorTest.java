@@ -1,4 +1,6 @@
+import machine.Rotor;
 import org.junit.jupiter.api.Test;
+import utilities.WiringData;
 
 import static org.junit.jupiter.api.Assertions.*;
 
