@@ -1,4 +1,4 @@
-import machine.Rotor;
+import machine_pieces.Rotor;
 import org.junit.jupiter.api.Test;
 import utilities.WiringData;
 

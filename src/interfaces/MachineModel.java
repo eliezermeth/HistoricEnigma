@@ -7,7 +7,7 @@ package interfaces;
  * Interface for containing a constructed model of the Enigma machine.
  */
 
-public interface Model
+public interface MachineModel
 {
     /**
      * Method to type a letter into the Enigma machine.

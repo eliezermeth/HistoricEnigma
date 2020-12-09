@@ -1,4 +1,4 @@
-import machine.Plugboard;
+import machine_pieces.Plugboard;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;

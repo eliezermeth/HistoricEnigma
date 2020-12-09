@@ -1,6 +1,6 @@
 package utilities;
 
-import machine.GearConstruction;
+import machine_pieces.GearConstruction;
 
 import java.util.HashMap;
 import java.util.Map;

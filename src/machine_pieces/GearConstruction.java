@@ -1,4 +1,4 @@
-package machine;
+package machine_pieces;
 
 import java.util.LinkedList;
 

@@ -1,7 +1,7 @@
-package machine;
+package machine_pieces;
 
 import com.sun.istack.internal.NotNull;
-import interfaces.Model;
+import interfaces.MachineModel;
 
 /**
  * @author Eliezer Meth
@@ -12,7 +12,7 @@ import interfaces.Model;
  * and it would illuminate one of the lamps (output the character).
  */
 
-public class ConstructedMilitaryModel implements Model
+public class ConstructedMilitaryModel implements MachineModel
 {
     // Hardware pieces
     private final Rotor[] rotors;
