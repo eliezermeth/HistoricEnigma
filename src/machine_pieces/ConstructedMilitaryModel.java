@@ -5,7 +5,7 @@ import interfaces.MachineModel;
 
 /**
  * @author Eliezer Meth
- * Start Date: 2020-12-08
+ * Start Date: 2020-12-09
  *
  * Class to hold a fully constructed Enigma machine, with its plugboard, rotors, and reflector.  It is to simulate the
  * electrical impulse that would occur in an actual machine.  A key would be pressed (in this case, a character input)
@@ -40,9 +40,9 @@ public class ConstructedMilitaryModel implements MachineModel
     @Override
     public char type(char plaintextLetter)
     {
+        stepping();
         int letter = convertChar(plaintextLetter); // convert to 0-based int
         int cipherLetter = plugboard.indexOf(rotor321(reflector.get(rotor123(plugboard.get(letter))))); // type letter into machine
-        stepping();
         return convertChar(cipherLetter);
     }
 

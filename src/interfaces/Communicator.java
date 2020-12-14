@@ -2,7 +2,7 @@ package interfaces;
 
 /**
  * @author Eliezer Meth
- * Start Date: 2020-12-08
+ * Start Date: 2020-12-09
  *
  * Interface for a method of communication with an I/O system..
  */
@@ -14,6 +14,12 @@ public interface Communicator
      * @return String of line.
      */
     String nextLine();
+
+    /**
+     * Method to get next integer.
+     * @return Integer on line.
+     */
+    int nextInt();
 
     /**
      * Method to send string.

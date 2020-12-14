@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author Eliezer Meth
  * Start Date: 2020-09-17
- * Last Modified: 2020-10-18
+ * Last Modified: 2020-12-14
  *
  * This class contains the wiring data for rotors (with their turnovers) and reflectors.
  *
@@ -19,6 +19,14 @@ import java.util.Map;
 
 public class WiringData
 {
+    /**
+     * Array of Enigma versions.
+     */
+    public static String[] enigmaVersions = new String[]{"Enigma1", "EnigmaM3"};
+    public enum enimgaVersionsEnum {
+            ENIGMA_1, ENIGMA_M3
+    }
+
     /**
      * This method contains the information for: Enigma I
      * This version was used by: Army, Luftwaffe (Air Force)

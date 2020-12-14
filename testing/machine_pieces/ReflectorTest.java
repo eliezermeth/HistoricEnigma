@@ -1,3 +1,5 @@
+package machine_pieces;
+
 import machine_pieces.Reflector;
 import org.junit.jupiter.api.Test;
 import utilities.WiringData;

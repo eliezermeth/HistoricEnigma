@@ -36,6 +36,16 @@ public class ConsoleCommunicator implements Communicator
     }
 
     /**
+     * Gets next int from console.
+     * @return Int.
+     */
+    @Override
+    public int nextInt()
+    {
+        return input.nextInt();
+    }
+
+    /**
      * Prints string to console.
      * @param str String.
      */

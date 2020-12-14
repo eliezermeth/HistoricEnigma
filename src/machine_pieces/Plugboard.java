@@ -9,7 +9,7 @@ import java.util.LinkedList;
 /**
  * @author Eliezer Meth
  * Start Date: 2020-10-01
- * Last Modified: 2020-11-09
+ * Last Modified: 2020-12-14
  *
  * The plugboard mimics the performance of an Enigma plugboard, in that it can connect one letter to a different letter
  * on its travel to the rotor, and a letter to the lamps.  It can accept up to 13 letter pairs, but provides the most
@@ -45,7 +45,7 @@ public class Plugboard implements Wiring
         this();
 
         // convert string into possible connections
-        String[] possibleConnections = wireList.split(" ");
+        String[] possibleConnections = wireList.trim().split(" ");
 
         // test if too many connections
         if (possibleConnections.length > 13)
