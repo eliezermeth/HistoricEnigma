@@ -44,6 +44,10 @@ public class Plugboard implements Wiring
     {
         this();
 
+        // if no letters, return
+        if (wireList.length() == 0)
+            return;
+
         // convert string into possible connections
         String[] possibleConnections = wireList.trim().split(" ");
 
