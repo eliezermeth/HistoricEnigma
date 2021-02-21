@@ -74,7 +74,7 @@ public class MachineBuilder
      * Method to set version of Enigma.
      * @param version Enigma version.
      */
-    private void setMachineVersion(WiringData.enimgaVersionsEnum version)
+    private MachineBuilder setMachineVersion(WiringData.enimgaVersionsEnum version)
     {
         // TODO use machine type to set other variables
         machineVersion = version;
@@ -91,151 +91,175 @@ public class MachineBuilder
             numRotorsAvailable = 8;
             numReflectorsAvailable = 2;
         }
+
+        return this;
     }
 
     /**
      * Method to add connection to plugboard.
      * @param letters Letters to be connected on plugboard.
      */
-    public void addPlugboardConnection(String letters)
+    public MachineBuilder addPlugboardConnection(String letters)
     {
         if (letters.length() < 2)
-            return;
+            return this;
 
         letters = letters.toUpperCase();
         char letter1 = letters.charAt(0);
         char letter2 = letters.charAt(1);
 
         if (!Character.isAlphabetic(letter1) || !Character.isAlphabetic(letter2))
-            return;
+            return this;
 
         for (String letterPair : connections)
             if (letterPair.charAt(0) == letter1 || letterPair.charAt(0) == letter2 ||
                 letterPair.charAt(1) == letter1 || letterPair.charAt(1) == letter2)
-                return; // if doubled letter, do not add
+                return this; // if doubled letter, do not add
 
         connections.add("" + letter1 + letter2);
+
+        return this;
     }
 
     /**
      * Method to set the selected rotor for rotor 1.
      * @param num Number of rotor.
      */
-    public void setRotor1(int num)
+    public MachineBuilder setRotor1(int num)
     {
         if (num > 0 && num <= numRotorsAvailable)
         {
             preliminaryRotors[0].rotorSelected = num;
             rotorSet[0] = true;
         }
+
+        return this;
     }
 
     /**
      * Method to set the initial position (letter on top) of rotor 1.
      * @param position Character of letter.
      */
-    public void setRotor1InitialPosition(char position)
+    public MachineBuilder setRotor1InitialPosition(char position)
     {
         position = Character.toUpperCase(position);
 
         if (position >= 'A' && position <= 'Z')
             preliminaryRotors[0].rotorInitialPosition = position;
+
+        return this;
     }
 
     /**
      * Method to set the ring setting of rotor 1.
      * @param setting Character of setting letter.
      */
-    public void setRotor1RingSetting(char setting)
+    public MachineBuilder setRotor1RingSetting(char setting)
     {
         setting = Character.toUpperCase(setting);
 
         if (setting >= 'A' && setting <= 'Z')
             preliminaryRotors[0].rotorRingSetting = setting;
+
+        return this;
     }
 
     /**
      * Method to set the selected rotor for rotor 2.
      * @param num Number of rotor.
      */
-    public void setRotor2(int num)
+    public MachineBuilder setRotor2(int num)
     {
         if (num > 0 && num <= numRotorsAvailable)
         {
             preliminaryRotors[1].rotorSelected = num;
             rotorSet[0] = true;
         }
+
+        return this;
     }
 
     /**
      * Method to set the initial position (letter on top) of rotor 2.
      * @param position Character of letter.
      */
-    public void setRotor2InitialPosition(char position)
+    public MachineBuilder setRotor2InitialPosition(char position)
     {
         position = Character.toUpperCase(position);
 
         if (position >= 'A' && position <= 'Z')
             preliminaryRotors[1].rotorInitialPosition = position;
+
+        return this;
     }
 
     /**
      * Method to set the ring setting of rotor 2.
      * @param setting Character of setting letter.
      */
-    public void setRotor2RingSetting(char setting)
+    public MachineBuilder setRotor2RingSetting(char setting)
     {
         setting = Character.toUpperCase(setting);
 
         if (setting >= 'A' && setting <= 'Z')
             preliminaryRotors[1].rotorRingSetting = setting;
+
+        return this;
     }
 
     /**
      * Method to set the selected rotor for rotor 3.
      * @param num Number of rotor.
      */
-    public void setRotor3(int num)
+    public MachineBuilder setRotor3(int num)
     {
         if (num > 0 && num <= numRotorsAvailable)
         {
             preliminaryRotors[2].rotorSelected = num;
             rotorSet[0] = true;
         }
+
+        return this;
     }
 
     /**
      * Method to set the initial position (letter on top) of rotor 3.
      * @param position Character of letter.
      */
-    public void setRotor3InitialPosition(char position)
+    public MachineBuilder setRotor3InitialPosition(char position)
     {
         position = Character.toUpperCase(position);
 
         if (position >= 'A' && position <= 'Z')
             preliminaryRotors[2].rotorInitialPosition = position;
+
+        return this;
     }
 
     /**
      * Method to set the ring setting of rotor 3.
      * @param setting Character of setting letter.
      */
-    public void setRotor3RingSetting(char setting)
+    public MachineBuilder setRotor3RingSetting(char setting)
     {
         setting = Character.toUpperCase(setting);
 
         if (setting >= 'A' && setting <= 'Z')
             preliminaryRotors[2].rotorRingSetting = setting;
+
+        return this;
     }
 
     /**
      * Method to select reflector.
      * @param num Number of reflector.
      */
-    public void setReflectorSelected(int num)
+    public MachineBuilder setReflectorSelected(int num)
     {
         if (num > 0 && num <= numReflectorsAvailable)
             reflectorSelected = num;
+
+        return this;
     }
 
     public ConstructedMilitaryModel build()
@@ -289,7 +313,7 @@ public class MachineBuilder
             if (rotorSet[i] && !takenNumbers.contains(preliminaryRotors[i].rotorSelected))
                 takenNumbers.add(preliminaryRotors[i].rotorSelected);
             else if (rotorSet[i] && takenNumbers.contains(preliminaryRotors[i].rotorSelected))
-                needToFix.add(i);;
+                needToFix.add(i);
         }
         // non-set rotors
         for (int i = 0; i < preliminaryRotors.length; i++)
@@ -297,7 +321,7 @@ public class MachineBuilder
             if (!rotorSet[i] && !takenNumbers.contains(preliminaryRotors[i].rotorSelected))
                 takenNumbers.add(preliminaryRotors[i].rotorSelected);
             else if (!rotorSet[i] && takenNumbers.contains(preliminaryRotors[i].rotorSelected))
-                needToFix.add(i);;
+                needToFix.add(i);
         }
 
         // make list of available rotors
