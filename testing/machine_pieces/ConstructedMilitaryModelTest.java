@@ -1,6 +1,6 @@
 package machine_pieces;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import utilities.WiringData;
 
 import java.sql.Ref;
@@ -10,10 +10,16 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ConstructedMilitaryModelTest
 {
 
+    // to be modified by type()
+    String inputText = "ABC";
+    String outputText = "ESY";
+
     @Test
+    @Order(1)
     void type()
     {
         Map<String, GearConstruction[]> selection = WiringData.Enigma1();
@@ -29,7 +35,7 @@ class ConstructedMilitaryModelTest
 
         ConstructedMilitaryModel model = new ConstructedMilitaryModel(rotors, reflector, plugboard);
 
-        String plaintext = "ABC";
+        String plaintext = inputText;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < plaintext.length(); i++)
         {
@@ -37,7 +43,35 @@ class ConstructedMilitaryModelTest
         }
         String ciphertext = sb.toString();
 
-        System.out.println(ciphertext);
+        System.out.println(plaintext + " = " + ciphertext);
+    }
+
+    @Test
+    @Order(2)
+    void retype()
+    {
+        Map<String, GearConstruction[]> selection = WiringData.Enigma1();
+
+        Rotor[] rotors = new Rotor[3];
+        rotors[0] = new Rotor("1", "A", "A", selection);
+        rotors[1] = new Rotor("2", "A", "A", selection);
+        rotors[2] = new Rotor("3", "A", "A", selection);
+
+        Reflector reflector = new Reflector("2", selection);
+
+        Plugboard plugboard = new Plugboard();
+
+        ConstructedMilitaryModel model = new ConstructedMilitaryModel(rotors, reflector, plugboard);
+
+        String plaintext = outputText;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < plaintext.length(); i++)
+        {
+            sb.append(model.type(plaintext.charAt(i)));
+        }
+        String ciphertext = sb.toString();
+
+        System.out.println(outputText + " = " + ciphertext);
     }
 
     @Test

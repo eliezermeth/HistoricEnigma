@@ -2,6 +2,7 @@ package machine_pieces;
 
 import com.sun.istack.internal.NotNull;
 import interfaces.MachineModel;
+import utilities.InvalidKeyException;
 
 /**
  * @author Eliezer Meth
@@ -116,29 +117,7 @@ public class ConstructedMilitaryModel implements MachineModel
     }
 }
 
-/**
- * @author Eliezer Meth
- * Start Date: 2020-12-08
- *
- * Class for invalid letter typed into Enigma.
- */
-class InvalidKeyException extends RuntimeException
-{
-    /**
-     * Constructor for error with message.
-     * @param errorMessage String to be output with error.
-     * @param err Throwable error.
-     */
-    public InvalidKeyException(String errorMessage, Throwable err)
-    {
-        super(errorMessage, err);
-    }
 
-    /**
-     * Constructor for error of invalid key.
-     * @param rotorKey Key attempted to be typed into machine.
-     */
-    public InvalidKeyException(String rotorKey) {
-        super (rotorKey + " is not a valid key: ");
-    }
-}
+
+// TODO remove convertChar method
+// TODO remove type method

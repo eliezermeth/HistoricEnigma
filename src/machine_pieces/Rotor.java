@@ -211,3 +211,7 @@ public class Rotor implements Wiring
     }
 }
 // TODO does the turnover work correctly?
+
+// TODO visible wheel
+// TODO notch, turnover
+// remember - window off of vertical

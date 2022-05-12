@@ -64,7 +64,7 @@ public class HistoricEnigmaMachine
                 break;
             case "EnigmaM3":
                 selection = WiringData.EnigmaM3();
-                numRotors = 4;
+                numRotors = 3;
                 numReflectors = 2;
                 break;
             default:
