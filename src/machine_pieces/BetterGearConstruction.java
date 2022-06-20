@@ -77,7 +77,7 @@ public class BetterGearConstruction
      */
     public int[] getTurnoverPositions()
     {
-        return turnoverPositions.clone();// returns copy to prevent multiple components using same array
+        return turnoverPositions.clone(); // returns copy to prevent multiple components using same array
     }
 
     /**

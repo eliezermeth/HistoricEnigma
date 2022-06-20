@@ -34,7 +34,7 @@ public class BetterRotor implements BetterWiring
     private final int[] turnover; // letter(s) on top when the notch is engaged to turn over the next rotor
 
     /**
-     * Constructor to allow the rotor to be selected at its default settings
+     * Constructor to allow the rotor to be selected at its default settings.
      * @param rotorSelected 0-based number of which rotor selected for this instance.
      * @param selection Map for rotors and reflectors for a version of Enigma.
      */
