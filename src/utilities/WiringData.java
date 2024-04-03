@@ -1,5 +1,6 @@
 package utilities;
 
+import machine_pieces.BetterGearConstruction;
 import machine_pieces.GearConstruction;
 
 import java.util.HashMap;
@@ -49,6 +50,31 @@ public class WiringData
         reflectors[0] = new GearConstruction("EJMZALYXVBWFCRQUONTSPIKHGD", false, false); // UKW-A
         reflectors[1] = new GearConstruction("YRUHQSLDPXNGOKMIEBFZCWVJAT", false, false); // UKW-B
         reflectors[2] = new GearConstruction("FVPJIAOYEDRZXWGCTKUQSBNMHL", false, false); // UKW-C
+
+        // Place rotors and reflectors into map
+        selection.put("rotor", rotors);
+        selection.put("reflector", reflectors);
+
+        return selection;
+    }
+
+    public static Map<String, BetterGearConstruction[]> betterEnigma1()
+    {
+        Map<String, BetterGearConstruction[]> selection = new HashMap<>();
+
+        // rotors
+        BetterGearConstruction[] rotors = new BetterGearConstruction[5];
+        rotors[0] = new BetterGearConstruction("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q"); // I
+        rotors[1] = new BetterGearConstruction("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E"); // II
+        rotors[2] = new BetterGearConstruction("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V"); // III
+        rotors[3] = new BetterGearConstruction("ESOVPZJAYQUIRHXLNFTGKDCMWB", "J"); // IV
+        rotors[4] = new BetterGearConstruction("VZBRGITYUPSDNHLXAWMJQOFECK", "Z"); // V
+
+        // reflectors
+        BetterGearConstruction[] reflectors = new BetterGearConstruction[3];
+        reflectors[0] = new BetterGearConstruction("EJMZALYXVBWFCRQUONTSPIKHGD", false, false, false); // UKW-A
+        reflectors[1] = new BetterGearConstruction("YRUHQSLDPXNGOKMIEBFZCWVJAT", false, false, false); // UKW-B
+        reflectors[2] = new BetterGearConstruction("FVPJIAOYEDRZXWGCTKUQSBNMHL", false, false, false); // UKW-C
 
         // Place rotors and reflectors into map
         selection.put("rotor", rotors);

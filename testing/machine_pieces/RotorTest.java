@@ -1,5 +1,6 @@
 package machine_pieces;
 
+import com.sun.corba.se.impl.ior.WireObjectKeyTemplate;
 import machine_pieces.Rotor;
 import org.junit.jupiter.api.Test;
 import utilities.WiringData;
@@ -8,45 +9,61 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RotorTest
 {
+    // TODO tests on constructors
 
     @Test
     void getRotorSelected()
     {
-        Rotor r1 = new Rotor("1", WiringData.Enigma1());
-        Rotor r2 = new Rotor("2", WiringData.Enigma1());
-        assertEquals("1", r1.getRotorSelected());
-        assertEquals("2", r2.getRotorSelected());
+        BetterRotor r1 = new BetterRotor(1, WiringData.betterEnigma1());
+        BetterRotor r2 = new BetterRotor(2, WiringData.betterEnigma1());
+        assertEquals(1, r1.getRotorSelected());
+        assertEquals(2, r2.getRotorSelected());
     }
 
     @Test
     void setRingSetting()
     {
-        Rotor r1 = new Rotor("1", WiringData.Enigma1());
-        assertEquals("A", r1.getRingSetting());
-        r1.setRingSetting("D");
-        assertEquals("D", r1.getRingSetting());
+        BetterRotor r1 = new BetterRotor(1, WiringData.betterEnigma1());
+        assertEquals(0, r1.getRingSetting()); // default setting, A
+        r1.setRingSetting(4); // set to E
+        assertEquals(4, r1.getRingSetting());
     }
 
     @Test
     void getRingSetting()
     {
-        Rotor r1 = new Rotor("1", WiringData.Enigma1());
-        assertEquals("A", r1.getRingSetting());
+        // see tests in setRingSetting()
     }
 
     @Test
     void setInitialPosition()
     {
-        Rotor r1 = new Rotor("1", WiringData.Enigma1());
-        r1.setInitialPosition("B");
-        assertEquals("B", r1.getInitialPosition());
+        BetterRotor br1 = new BetterRotor(1, WiringData.betterEnigma1());
+        assertEquals(0, br1.getInitialPosition()); // default
+        br1.setInitialPosition(1); // set to B
+        assertEquals(1, br1.getInitialPosition());
+        br1.setInitialPosition(-1); // go backwards to Z
+        assertEquals(25, br1.getInitialPosition());
     }
 
     @Test
     void getInitialPosition()
     {
-        Rotor r1 = new Rotor("1", WiringData.Enigma1());
-        assertEquals("A", r1.getInitialPosition());
+        // see tests in setInitialPosition()
+    }
+
+    @Test
+    void getWindow()
+    {
+        BetterRotor br1 = new BetterRotor(1, WiringData.betterEnigma1());
+        assertEquals(0, br1.getWindow());
+        br1.setInitialPosition(1);
+        assertEquals(1, br1.getWindow());
+
+        BetterRotor br2 = new BetterRotor(2, WiringData.betterEnigma1());
+        assertEquals(0, br2.getWindow());
+        br2.setInitialPosition(5);
+        assertEquals(5, br2.getWindow());
     }
 
     @Test

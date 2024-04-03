@@ -132,11 +132,10 @@ public class BetterRotor implements BetterWiring
     {
         // if positive, drop to valid length
         // if negative, bring negative to within parameters and add to length
-        return (number > 1) ? (number % wiring.length) : (wiring.length + (number % wiring.length));
+        return (number > -1) ? (number % wiring.length) : ((wiring.length + (number % wiring.length)) % wiring.length);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
-    // Running methods
+    // Running methods -------------------------------------------------------------------------------------------------
 
     @Override
     public int input(int letter)
