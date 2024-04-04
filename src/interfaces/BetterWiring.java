@@ -5,22 +5,22 @@ package interfaces;
  * toward reflector) and an output method (flow from reflector toward lampboard).
  *
  * @author Eliezer Meth
- * @version 1.2
- * Start Date: 2022-02-23
+ * @version 2
+ * Start Date: 2024-03-03
  */
 public interface BetterWiring
 {
     /**
      * Simulates electrical flow into the component in the direction of keyboard toward reflector.
-     * @param letter 'A'->0 input to component.
-     * @return 'A'->0 output from component.
+     * @param letter Letter input to component.
+     * @return Letter output from component.
      */
-    int input(int letter);
+    char input(char letter);
 
     /**
      * Simulates electrical flow into the component in the direction of reflector toward keyboard.
-     * @param letter 'A'->0 input to component.
-     * @return 'A'->0 output from component.
+     * @param letter Letter input to component.
+     * @return Letter output from component
      */
-    int output(int letter);
+    char output(char letter);
 }

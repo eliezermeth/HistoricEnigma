@@ -1,40 +1,38 @@
 package machine_pieces;
 
-import java.util.LinkedList;
+import utilities.Utilities;
 
 /**
- * @author Eliezer Meth
- * Start Date: 2020-09-17
- * Last Modified: 2020-09-24
- *
  * This class is instantiated to create an unmodified rotor or reflector in its most basic sense.
+ *
+ * @author Eliezer Meth
+ * @version 2
+ * Start Date: 2022-02-22
+ * Last Modified: 2022-02-23
  */
-
 public class GearConstruction
 {
     // interfaces.Wiring (for either rotor or reflector)
-    private final int[] wirings = new int[26]; // will be 26 letters
+    private char[] wiring;
 
-    // For rotor
-    private char[] turnoverPositions; // one or more
+    // for rotor
+    private char[] turnoverPositions; // letter(s) visible in window at step when ringstellung (ring setting) is A
+    // notches (to physically cause turnover) are 8 positions further on from visible in window
 
-    // For reflector
+    // for reflector
     private boolean reflectorRotatable;
     private boolean reflectorRewirable;
+    private boolean reflectorStepping;
 
     /**
      * Constructor for rotor.
      * @param wirings String in order of scrambled letter output.
-     * @param turnover String of letter(s) on top when it causes the next rotor to step.
+     * @param turnover String of letter(s) in window when notch causes next rotor to step.
      */
     public GearConstruction(String wirings, String turnover)
     {
-        populateWiringsArray(wirings);
-
-        turnoverPositions = new char[turnover.length()];
-        for (int i = 0; i < turnover.length(); i++)
-            turnoverPositions[i] = turnover.charAt(i);
-
+        populateWiring(wirings); // set wiring
+        turnoverPositions = Utilities.intAdjustArray(turnover.toCharArray()); // set turnover
     }
 
     /**
@@ -42,73 +40,70 @@ public class GearConstruction
      * @param wirings String in order of scrambled letter output.
      * @param reflectorRotatable If reflector can rotate position and setting.
      * @param reflectorRewirable If reflector can be rewired.
+     * @param reflectorStepping If reflector steps.
      */
-    public GearConstruction(String wirings, boolean reflectorRotatable, boolean reflectorRewirable)
+    public GearConstruction(String wirings, boolean reflectorRotatable, boolean reflectorRewirable, boolean reflectorStepping)
     {
-        populateWiringsArray(wirings);
+        populateWiring(wirings);
         this.reflectorRotatable = reflectorRotatable;
         this.reflectorRewirable = reflectorRewirable;
+        this.reflectorStepping = reflectorStepping;
     }
 
     /**
-     * Method to take string of wiring instructions and convert them into the wirings array.
-     * @param wirings String of wiring instructions.
+     * Takes String of wiring instructions and converts it into wiring array.
+     * @param wiring String of wiring instructions.
      */
-    private void populateWiringsArray(String wirings)
+    private void populateWiring(String wiring)
     {
-        for (int i = 0; i < 26; i++)
-            this.wirings[i] = wirings.charAt(i) - 'A'; // to make A = 0
+        this.wiring = Utilities.intAdjustArray(wiring.toCharArray());
     }
 
-    // Getter method for rotors for the wiring
+    // -----------------------------------------------------------------------------------------------------------------
+    // Getter methods for rotor and reflector
 
     /**
-     * Method to get rotor wiring.
-     * @return LinkedList<Integer> containing number representation of the letters.
+     * Get wiring of machine component.
+     * @return 'A'->0 int[].
      */
-    public LinkedList<Integer> getRotorWiring()
+    public int[] getWiring()
     {
-        LinkedList<Integer> linkedList = new LinkedList<>();
-
-        for (int num : wirings)
-            linkedList.add(num);
-
-        return linkedList;
+        return wiring.clone(); // returns copy to prevent multiple components using same array
     }
 
     /**
-     * Method to get rotor turnover positions (what letter is on top at that point).
-     * @return char[] of letter turnover positions.
+     * Get turnover positions on rotor.
+     * @return 'A'->0 int[].
      */
-    public char[] getTurnoverPositions()
+    public int[] getTurnoverPositions()
     {
-        return turnoverPositions;
+        return turnoverPositions.clone(); // returns copy to prevent multiple components using same array
     }
 
     /**
-     * Method to get reflector wiring.
-     * @return int[] containing number representation of the letters.
+     * Reflector rotatable possibility.
+     * @return True/false.
      */
-    public int[] getReflectorWiring()
-    {
-        return wirings;
-    }
-
-    /**
-     * Method to get if the reflector is rotatable.
-     * @return Boolean if reflector is rotatable.
-     */
-    public boolean getReflectorRotatable()
+    public boolean isReflectorRotatable()
     {
         return reflectorRotatable;
     }
 
     /**
-     * Method to get if the reflector is rewirable.
-     * @return Boolean if reflector is rewirable.
+     * Reflector rewirable possibility.
+     * @return True/false.
      */
-    public boolean getReflectorRewirable()
+    public boolean isReflectorRewirable()
     {
         return reflectorRewirable;
+    }
+
+    /**
+     * Reflector stepping possibility.
+     * @return True/false.
+     */
+    public boolean isReflectorStepping()
+    {
+        return reflectorStepping;
     }
 }
