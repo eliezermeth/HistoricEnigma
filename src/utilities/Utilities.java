@@ -24,7 +24,7 @@ public class Utilities
     {
         char[] array = Utilities.getAzArray();
 
-        LinkedList<Character> list = new LinkedList<>(array.le);
+        LinkedList<Character> list = new LinkedList<>();
         for (char letter : array)
             list.add(letter);
         return list;

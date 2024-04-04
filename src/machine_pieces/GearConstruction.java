@@ -2,18 +2,25 @@ package machine_pieces;
 
 import utilities.Utilities;
 
+import java.util.ArrayList;
+
 /**
  * This class is instantiated to create an unmodified rotor or reflector in its most basic sense.
  *
  * @author Eliezer Meth
- * @version 2
+ * @version 3
  * Start Date: 2022-02-22
- * Last Modified: 2022-02-23
+ * Last Modified: 2024-04-04
  */
 public class GearConstruction
 {
     // interfaces.Wiring (for either rotor or reflector)
-    private char[] wiring;
+    private ArrayList<Character> letters; // letters visible on the rotor/reflector
+    private ArrayList<Character> wirings; // wiring connection from the visible letters of rotor/reflector
+    /* Letters (front) and wirings (back) have a one-to-one relation.  The letter in front element 0 links directly to
+    wiring back element 0.  However, to find where the signal is output from the gear, the letter from the back must
+    have its position found in the front.
+    */
 
     // for rotor
     private char[] turnoverPositions; // letter(s) visible in window at step when ringstellung (ring setting) is A
@@ -32,7 +39,7 @@ public class GearConstruction
     public GearConstruction(String wirings, String turnover)
     {
         populateWiring(wirings); // set wiring
-        turnoverPositions = Utilities.intAdjustArray(turnover.toCharArray()); // set turnover
+        turnoverPositions = turnover.toCharArray();
     }
 
     /**
@@ -56,7 +63,14 @@ public class GearConstruction
      */
     private void populateWiring(String wiring)
     {
-        this.wiring = Utilities.intAdjustArray(wiring.toCharArray());
+        // populate letters (front)
+        letters = Utilities.getAzArrayList();
+
+        // populate wirings (back)
+        char[] characters = wiring.toCharArray();
+        wirings = new ArrayList<>(characters.length);
+        for (char c : characters)
+            wirings.add(c);
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -64,18 +78,18 @@ public class GearConstruction
 
     /**
      * Get wiring of machine component.
-     * @return 'A'->0 int[].
+     * @return array of two ArrayLists [letters, wirings]
      */
-    public int[] getWiring()
+    public ArrayList<Character>[] getWirings()
     {
-        return wiring.clone(); // returns copy to prevent multiple components using same array
+        return new ArrayList[] {new ArrayList<>(letters), new ArrayList<>(wirings)};
     }
 
     /**
      * Get turnover positions on rotor.
-     * @return 'A'->0 int[].
+     * @return char[]
      */
-    public int[] getTurnoverPositions()
+    public char[] getTurnoverPositions()
     {
         return turnoverPositions.clone(); // returns copy to prevent multiple components using same array
     }

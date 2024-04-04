@@ -8,7 +8,7 @@ package interfaces;
  * @version 2
  * Start Date: 2024-03-03
  */
-public interface BetterWiring
+public interface Wiring
 {
     /**
      * Simulates electrical flow into the component in the direction of keyboard toward reflector.
