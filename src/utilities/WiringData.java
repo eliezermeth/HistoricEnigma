@@ -6,15 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Eliezer Meth
- * Start Date: 2020-09-17
- * Last Modified: 2020-12-14
- *
  * This class contains the wiring data for rotors (with their turnovers) and reflectors.
- *
- * Historic rotor configurations can be found at:
- * https://en.wikipedia.org/wiki/Enigma_rotor_details
- * https://www.cryptomuseum.com/crypto/enigma/wiring.htm#10
+ * <br><br>
+ * Historic rotor configurations can be found at:<br>
+ * <a href="https://en.wikipedia.org/wiki/Enigma_rotor_details">https://en.wikipedia.org/wiki/Enigma_rotor_details</a><br>
+ * <a href="https://www.cryptomuseum.com/crypto/enigma/wiring.htm#10">https://www.cryptomuseum.com/crypto/enigma/wiring.htm#10</a><br>
+ * <br>
+ * @author Eliezer Meth
+ * @version 1<br>
+ * Start Date: 2020-09-17<br>
+ * Last Modified: 2020-12-14
  */
 
 public class WiringData
@@ -62,7 +63,7 @@ public class WiringData
      * This version was used by: Kriegsmarine (Navy)
      * @return Map<String, machine.GearConstruction[]> of gear data.
      */
-/*    public static Map<String, GearConstruction[]> EnigmaM3()
+    public static Map<String, GearConstruction[]> EnigmaM3()
     {
         Map<String, GearConstruction[]> selection = new HashMap<>();
 
@@ -79,13 +80,13 @@ public class WiringData
 
         // reflectors
         GearConstruction[] reflectors = new GearConstruction[2];
-        reflectors[0] = new GearConstruction("YRUHQSLDPXNGOKMIEBFZCWVJAT", false, false); // UKW-B
-        reflectors[1] = new GearConstruction("FVPJIAOYEDRZXWGCTKUQSBNMHL", false, false); // UKW-C
+        reflectors[0] = new GearConstruction("YRUHQSLDPXNGOKMIEBFZCWVJAT", false, false, false); // UKW-B
+        reflectors[1] = new GearConstruction("FVPJIAOYEDRZXWGCTKUQSBNMHL", false, false, false); // UKW-C
 
         // Place rotors and reflectors into map
         selection.put("rotor", rotors);
         selection.put("reflector", reflectors);
 
         return selection;
-    }*/
+    }
 }
