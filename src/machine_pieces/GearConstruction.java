@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * This class is instantiated to create an unmodified rotor or reflector in its most basic sense.
  *
  * @author Eliezer Meth
- * @version 3
- * Start Date: 2022-02-22
+ * @version 3<br>
+ * Start Date: 2022-02-22<br>
  * Last Modified: 2024-04-04
  */
 public class GearConstruction

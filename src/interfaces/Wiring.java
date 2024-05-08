@@ -13,7 +13,7 @@ public interface Wiring
 {
     /**
      * Simulates electrical flow into the component in the direction of keyboard toward reflector.
-     * <p>
+     * <br>
      * Data is transmitted in the form of a contact signal, an electrical impulse at a contact.  Contacts start from
      * contact 00, which is at the top of the rotor.  This physical position is by the letter in the window <b>at that
      * time</b>.  Contact 00 is the unmoving designation at the top, and all other contacts circle from there.
@@ -25,7 +25,7 @@ public interface Wiring
 
     /**
      * Simulates electrical flow into the component in the direction of reflector toward keyboard.
-     * <p>
+     * <br>
      * Data is transmitted in the form of a contact signal, an electrical impulse at a contact.  Contacts start from
      * contact 00, which is at the top of the rotor.  This physical position is by the letter in the window <b>at that
      * time</b>.  Contact 00 is the unmoving designation at the top, and all other contacts circle from there.

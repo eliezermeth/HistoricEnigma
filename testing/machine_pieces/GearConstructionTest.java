@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /***
  * @author Eliezer Meth
- * @version 1
+ * @version 1<br>
  * Start Date: 2024-04-04
  */
 class GearConstructionTest

@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /***
  * @author Eliezer Meth
- * @version 1
- * Start Date: 2024-04-11
+ * @version 1<br>
+ * Start Date: 2024-04-11<br>
  * Last Modified: 2024-04-17
  */
 class RotorTest
