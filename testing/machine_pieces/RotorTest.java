@@ -17,23 +17,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class RotorTest
 {
     // set up for rotors to be used by tests
-    Map<String, GearConstruction[]> enigma1 = WiringData.Enigma1();
+    //Map<String, GearConstruction[]> enigma1 = WiringData.Enigma1();
+    Map<String, Map<String, GearConstruction>> enigma1 = WiringData.Enigma1();
 
     @Test
     void getRotorSelected()
     {
-        Rotor rotor1 = new Rotor(1, enigma1);
-        assertEquals(1, rotor1.getRotorSelected());
+        Rotor rotor1 = new Rotor("I", enigma1);
+        assertEquals("I", rotor1.getRotorSelected());
 
-        Rotor rotor2 = new Rotor(2, 1, 'B', enigma1);
-        assertEquals(2, rotor2.getRotorSelected());
+        Rotor rotor2 = new Rotor("II", 1, 'B', enigma1);
+        assertEquals("II", rotor2.getRotorSelected());
     }
 
     @Test
     void setRingSetting()
     {
         // test what happens when a ring setting is modified on an existing rotor
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         rotor1.setRingSetting(13);
         assertEquals(13, rotor1.getRingSetting());
         // test end
@@ -53,17 +54,17 @@ class RotorTest
     void getRingSetting()
     {
         // at creation of rotor
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         assertEquals(1, rotor1.getRingSetting());
 
-        Rotor rotor2 = new Rotor(2, 5, 'B', enigma1);
+        Rotor rotor2 = new Rotor("II", 5, 'B', enigma1);
         assertEquals(5, rotor2.getRingSetting());
     }
 
     @Test
     void setGroundPosition()
     {
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         assertEquals('A', rotor1.getGroundPosition());
         assertTrue(rotor1.setGroundPosition('M'));
         assertEquals('M', rotor1.getGroundPosition());
@@ -74,17 +75,17 @@ class RotorTest
     @Test
     void getGroundPosition()
     {
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         assertEquals('A', rotor1.getGroundPosition());
 
-        Rotor rotor2 = new Rotor(2, 1, 'B', enigma1);
+        Rotor rotor2 = new Rotor("II", 1, 'B', enigma1);
         assertEquals('B', rotor2.getGroundPosition());
     }
 
     @Test
     void getWindow()
     {
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         assertEquals('A', rotor1.getWindow());
         rotor1.step();
         assertEquals('B', rotor1.getWindow());
@@ -94,7 +95,7 @@ class RotorTest
     void getWirings()
     {
         // only test the first few elements of each ArrayList; assume all others correct if those are correct
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
 
         ArrayList<Character>[] temp = rotor1.getWirings(); // basic
         ArrayList<Character> testLetters = temp[0];
@@ -144,15 +145,15 @@ class RotorTest
     @Test
     void getTurnoverPositions()
     {
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         assertArrayEquals(new char[]{'Q'}, rotor1.getTurnoverPositions());
 
-        Rotor rotor2 = new Rotor(2, 1, 'B', enigma1);
+        Rotor rotor2 = new Rotor("II", 1, 'B', enigma1);
         assertArrayEquals(new char[]{'E'}, rotor2.getTurnoverPositions());
 
         // test rotor with multiple turnovers
-        Map<String, GearConstruction[]> enigmaM3 = WiringData.EnigmaM3();
-        Rotor rotor3 = new Rotor(6, enigmaM3);
+        Map<String, Map<String, GearConstruction>> enigmaM3 = WiringData.EnigmaM3();
+        Rotor rotor3 = new Rotor("VI", enigmaM3);
         assertArrayEquals(new char[]{'Z', 'M'}, rotor3.getTurnoverPositions());
     }
 
@@ -160,7 +161,7 @@ class RotorTest
     void input()
     {
         // most tests on rotor 1
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         assertEquals(4, rotor1.input(0)); // rotor receives A, sends E
         assertEquals(14, rotor1.input(12)); // rotor receives M, sends O
         rotor1.step();
@@ -172,7 +173,7 @@ class RotorTest
         assertEquals(5, rotor1.input(1)); // rotor receives B, sends F
 
         // confirm initial tests on rotor 2
-        Rotor rotor2 = new Rotor(2, 1, 'B', enigma1);
+        Rotor rotor2 = new Rotor("II", 1, 'B', enigma1);
         assertEquals(8, rotor2.input(0)); // rotor receives B, sends J
         assertEquals(2, rotor2.input(1)); // rotor receives C, sends D
         rotor2.setGroundPosition('A');
@@ -183,7 +184,7 @@ class RotorTest
     void output()
     {
         // most tests on rotor 1
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         assertEquals(20, rotor1.output(0)); // rotor receives A, sends U
         assertEquals(22, rotor1.output(1)); // rotor receives B, sends W
         assertEquals(0, rotor1.output(4)); // rotor receives E, sends A
@@ -196,7 +197,7 @@ class RotorTest
         assertEquals(22, rotor1.output(2)); // rotor receives C, sends W
 
         // confirm initial tests on rotor 2
-        Rotor rotor2 = new Rotor(2, 1, 'B', enigma1);
+        Rotor rotor2 = new Rotor("II", 1, 'B', enigma1);
         assertEquals(16, rotor2.output(5)); // rotor receives G, sends R
         assertEquals(17, rotor2.output(24)); // rotor receives Z, sends S
     }
@@ -204,7 +205,7 @@ class RotorTest
     @Test
     void step()
     {
-        Rotor rotor1 = new Rotor(1, enigma1);
+        Rotor rotor1 = new Rotor("I", enigma1);
         assertEquals('A', rotor1.getWindow());
 
         boolean propagate = rotor1.step();

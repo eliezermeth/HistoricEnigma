@@ -24,7 +24,7 @@ public class Rotor implements Wiring
 {
     // Initial rotor information
     private final GearConstruction gear; // factory setting of rotor
-    private final int rotorSelected; // rotor selected
+    private final String rotorSelected; // rotor selected
     private int ringSetting = 0; // ringstellung (ring setting) of rotor; defaults to A (0 is computer number)
     private char groundPosition = 'A'; // position of letter in window at start; defaults to A
 
@@ -39,13 +39,13 @@ public class Rotor implements Wiring
 
     /**
      * Constructor to allow the rotor to be selected at its default settings.
-     * @param rotorSelected human-based number of which rotor selected for this instance.
+     * @param rotorSelected name of rotor selected for this instance.
      * @param selection Map for rotors and reflectors for a version of Enigma.
      */
-    public Rotor (int rotorSelected, Map<String, GearConstruction[]> selection)
+    public Rotor (String rotorSelected, Map<String, Map<String, GearConstruction>> selection)
     {
         this.rotorSelected = rotorSelected;
-        gear = selection.get("rotor")[this.rotorSelected - 1]; // select rotor information for this rotor; -1 for human numbers
+        gear = selection.get("rotor").get(this.rotorSelected); // select rotor information for this rotor
         letters = gear.getWirings()[0]; // get letters wheel
         wirings = gear.getWirings()[1]; // get internal rotor wiring
         turnovers = gear.getTurnoverPositions(); // get turnover positions
@@ -53,12 +53,12 @@ public class Rotor implements Wiring
 
     /**
      * Constructor to allow the rotor to be constructed and fully primed with custom settings upon creation.
-     * @param rotorSelected human-based number of which rotor selected for this instance.
+     * @param rotorSelected name of rotor selected for this instance.
      * @param ringSetting Number for ring setting of rotor; 01 -> A.
      * @param groundPosition Letter on top of rotor at start.
      * @param selection Map for rotors and reflectors for a version of Enigma.
      */
-    public Rotor(int rotorSelected, int ringSetting, char groundPosition, Map<String, GearConstruction[]> selection)
+    public Rotor(String rotorSelected, int ringSetting, char groundPosition, Map<String, Map<String, GearConstruction>> selection)
     {
         this(rotorSelected, selection); // get rotor by calling other constructor
         setRingSetting(ringSetting); // set ring setting
@@ -66,10 +66,10 @@ public class Rotor implements Wiring
     }
 
     /**
-     * Get the number of the selected rotor.
-     * @return human-based designation of rotor.
+     * Get the name of the selected rotor.
+     * @return name designation of rotor.
      */
-    public int getRotorSelected()
+    public String getRotorSelected()
     {
         return rotorSelected;
     }

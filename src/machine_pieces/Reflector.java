@@ -21,7 +21,7 @@ public class Reflector implements Wiring
 {
     // External reflector information
 
-    private final int reflectorSelected; // reflector selected
+    private final String reflectorSelected; // reflector selected
 
     // Internal reflector configurations
     private final GearConstruction gear; // factory setting of rotor
@@ -41,14 +41,14 @@ public class Reflector implements Wiring
 
     /**
      * Constructor to select the correct reflector.
-     * @param reflectorSelected int element position within selection for reflector.
+     * @param reflectorSelected name of reflector.
      * @param selection Map for rotors and reflectors for a version of Enigma.
      */
-    public Reflector(int reflectorSelected, Map<String, GearConstruction[]> selection)
+    public Reflector(String reflectorSelected, Map<String, Map<String, GearConstruction>> selection)
     {
         this.reflectorSelected = reflectorSelected;
 
-        gear = selection.get("reflector")[this.reflectorSelected];
+        gear = selection.get("reflector").get(reflectorSelected);
         letters = gear.getWirings()[0];
         wirings = gear.getWirings()[1];
         rotatable = gear.isReflectorRotatable();
@@ -63,8 +63,8 @@ public class Reflector implements Wiring
      */
     public String getReflectorSelected()
     {
-        return Integer.toString(reflectorSelected);
-    } // TODO REFLECTOR_SELECTION
+        return reflectorSelected;
+    }
 
     /**
      * Returns if the reflector is rotatable.
@@ -131,10 +131,6 @@ public class Reflector implements Wiring
     {
         return wirings.indexOf(letters.get(contactSignal));
     }
-
-
-    // TODO REFLECTOR_SELECTION
-    // -- rewrite reflector selection; WiringData reflectors to use map
 
     // TODO did not program rotatable, stepping, rewirable to check exact mechanics
     // TODO if rewirable, need methods to rewire rotor
