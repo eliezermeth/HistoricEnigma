@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Eliezer Meth
  * @version 3<br>
  * Start Date: 2024-04-05<br>
- * Last Modified: 2024-04-17
+ * Last Modified: 2024-05-08
  */
 public class Rotor implements Wiring
 {
