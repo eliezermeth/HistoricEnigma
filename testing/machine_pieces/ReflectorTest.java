@@ -12,7 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * @author Eliezer Meth
  * @version 1<br>
- * Start Date: 2024-05-08
+ * Start Date: 2024-05-08<br>
+ * Last Modified: 2024-05-09
  */
 class ReflectorTest
 {
@@ -26,7 +27,6 @@ class ReflectorTest
     Reflector tft;
     Reflector ftf;
 
-    @Test
     void createTemporaryReflectors()
     {
         // temporary reflectors with different reflectors and settings
@@ -86,10 +86,19 @@ class ReflectorTest
     @Test
     void input()
     {
+        assertEquals(11, refB.input(6)); // reflector receives G, sends L
+        assertEquals(23, refB.input(9)); // reflector receives J, sends X
+        assertEquals(15, refC.input(2)); // reflector receives C, sends P
+        assertEquals(19, refC.input(16)); // reflector receives Q, sends T
     }
 
     @Test
     void output()
     {
+        // NOTE: Not to be used by typical Enigma machine, as it produces opposite effects.
+        assertEquals(6, refB.input(11)); // reflector receives L, sends G
+        assertEquals(9, refB.input(23)); // reflector receives X, sends J
+        assertEquals(2, refC.input(15)); // reflector receives P, sends C
+        assertEquals(16, refC.input(19)); // reflector receives T, sends Q
     }
 }
