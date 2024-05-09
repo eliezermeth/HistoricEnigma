@@ -55,7 +55,6 @@ public class Reflector implements Wiring
         stepping = gear.isReflectorStepping();
         rewirable = gear.isReflectorRewirable();
     }
-    // TODO REFLECTOR_SELECTION
 
     /**
      * Get the name of the selected reflector.

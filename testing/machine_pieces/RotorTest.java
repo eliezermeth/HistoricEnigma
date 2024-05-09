@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class RotorTest
 {
     // set up for rotors to be used by tests
-    //Map<String, GearConstruction[]> enigma1 = WiringData.Enigma1();
     Map<String, Map<String, GearConstruction>> enigma1 = WiringData.Enigma1();
 
     @Test

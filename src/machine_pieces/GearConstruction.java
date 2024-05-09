@@ -28,8 +28,8 @@ public class GearConstruction
 
     // for reflector
     private boolean reflectorRotatable;
-    private boolean reflectorRewirable;
     private boolean reflectorStepping;
+    private boolean reflectorRewirable;
 
     /**
      * Constructor for rotor.
@@ -46,15 +46,15 @@ public class GearConstruction
      * Constructor for reflector.
      * @param wirings String in order of scrambled letter output.
      * @param reflectorRotatable If reflector can rotate position and setting.
-     * @param reflectorRewirable If reflector can be rewired.
      * @param reflectorStepping If reflector steps.
+     * @param reflectorRewirable If reflector can be rewired.
      */
-    public GearConstruction(String wirings, boolean reflectorRotatable, boolean reflectorRewirable, boolean reflectorStepping)
+    public GearConstruction(String wirings, boolean reflectorRotatable, boolean reflectorStepping, boolean reflectorRewirable)
     {
         populateWiring(wirings);
         this.reflectorRotatable = reflectorRotatable;
-        this.reflectorRewirable = reflectorRewirable;
         this.reflectorStepping = reflectorStepping;
+        this.reflectorRewirable = reflectorRewirable;
     }
 
     /**
