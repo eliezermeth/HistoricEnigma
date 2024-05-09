@@ -133,4 +133,5 @@ public class Reflector implements Wiring
 
     // TODO did not program rotatable, stepping, rewirable to check exact mechanics
     // TODO if rewirable, need methods to rewire rotor
+    // TODO method to return wiring of reflector?  depends on above mechanics
 }
