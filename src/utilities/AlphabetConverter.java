@@ -1,6 +1,6 @@
 package utilities;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Class to receive and hold a custom alphabet.  Characters can then be converted to their index in the alphabet (int),
@@ -11,14 +11,15 @@ import java.lang.reflect.Array;
  *
  * @author Eliezer Meth
  * @version 1<br>
- * Start Date: 2024-05-16
+ * Start Date: 2024-05-15<br>
+ * Last Modified: 2024-05-17
  */
 public class AlphabetConverter
 {
     private static AlphabetConverter alphabetConverter;
 
-    private String sAlphabet = null;
-    private char[] alphabet;
+    private final String sAlphabet;
+    private final char[] alphabet;
 
     /**
      * Create an Alphabet Converter based on the passed parameter.
@@ -26,13 +27,23 @@ public class AlphabetConverter
      */
     private AlphabetConverter(char[] alphabet)
     {
-        this.alphabet = alphabet.clone(); // while only shallow copy, a single-dimensional array works with this
+        // remove all duplicates from alphabet
+        ArrayList<Character> temp = new ArrayList<>();
+        for (char c : alphabet)
+            if (!temp.contains(c))
+                temp.add(c);
+        char[] aTemp = new char[temp.size()];
+        for (int i = 0; i < aTemp.length; i++)
+            aTemp[i] = temp.get(i);
+
+        this.alphabet = aTemp;
         this.sAlphabet = new String(this.alphabet);
     }
 
     /**
      * Create an Alphabet Converter singleton.  The Alphabet Converter will be based on the alphabet parameter,
-     * unmodified.  If an instance was already created, throws an IllegalStateException.
+     * unmodified.  If an instance was already created, throws an IllegalStateException.  Duplicate characters will be
+     * reduced to the first occurrence.
      * @param alphabet String of all characters in the alphabet.
      * @throws IllegalStateException if singleton already exists
      */
@@ -43,7 +54,8 @@ public class AlphabetConverter
 
     /**
      * Create an Alphabet Converter singleton.  The Alphabet Converter will be based on the alphabet parameter,
-     * unmodified.  If an instance was already created, throws an IllegalStateException.
+     * unmodified.  If an instance was already created, throws an IllegalStateException.  Duplicate characters will be
+     * reduced to the first occurrence.
      * @param alphabet char array of all characters in the alphabet.
      * @throws IllegalStateException if singleton already exists
      */
