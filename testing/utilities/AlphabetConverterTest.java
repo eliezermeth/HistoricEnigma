@@ -65,7 +65,6 @@ class AlphabetConverterTest
         assertEquals(0, ac.convert('A'));
         assertEquals(25, ac.convert('Z'));
         assertEquals(-1, ac.convert('a'));
-
     }
 
     @Test

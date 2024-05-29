@@ -1,7 +1,7 @@
 package machine_pieces;
 
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import interfaces.Wiring;
+import utilities.AlphabetConverter;
 import utilities.InvalidKeyException;
 import utilities.Utilities;
 
@@ -20,19 +20,19 @@ import java.util.Set;
  * inserted.
  * <br>
  * @author Eliezer Meth
- * @version 2<br>
+ * @version 2.1<br>
  * Start Date: 2024-05-09<br>
- * Last Modified: 2024-05-15
+ * Last Modified: 2024-05-21
  */
 public class Plugboard implements Wiring
 {
     private final char EMPTY_CHAR = '\0';
-    private final String EMPTY_STRING = "";
 
     private char[] alphabet;
-    private char[] in_side;
-    private char[] out_side;
+    private int[] wiring; // to hold wiring connections for plugboard
     private LinkedList<String> connections = new LinkedList<>(); // list of connections in the plugboard
+
+    private AlphabetConverter ac;
 
     /**
      * Default constructor; initialized plugboard with 26-letter English alphabet and no connections.
@@ -40,6 +40,12 @@ public class Plugboard implements Wiring
     public Plugboard()
     {
         alphabet = Utilities.getAzArray();
+
+        // get alphabet converter
+        if (!AlphabetConverter.alphabetConverterExists())
+            AlphabetConverter.createAlphabetConverter(alphabet);
+        ac = AlphabetConverter.getAlphabetConverter();
+
         resetPlugboard();
     }
 
@@ -67,6 +73,12 @@ public class Plugboard implements Wiring
                 throw new InvalidKeyException("Duplicate characters are present in the alphabet.", new Exception());
 
         this.alphabet = alphabet; // set plugboard alphabet
+
+        // get alphabet converter
+        if (!AlphabetConverter.alphabetConverterExists())
+            AlphabetConverter.createAlphabetConverter(alphabet);
+        ac = AlphabetConverter.getAlphabetConverter();
+
         resetPlugboard();
     }
 
@@ -75,15 +87,10 @@ public class Plugboard implements Wiring
      */
     public void resetPlugboard()
     {
-        in_side = new char[alphabet.length];
-        out_side = new char[alphabet.length];
+        wiring = new int[alphabet.length];
 
-        // link letters in in_side[] and out_side[] to themselves
-        for (int i = 0; i < alphabet.length; i++)
-        {
-            in_side[i] = alphabet[i];
-            out_side[i] = alphabet[i];
-        }
+        for (int i = 0; i < wiring.length; i++) // set each letter to point to itself
+            wiring[i] = i;
 
         // clear connections list
         connections.clear();
@@ -125,23 +132,17 @@ public class Plugboard implements Wiring
         if (letterPair[0] == letterPair[1]) // verify letters are not the same
             return false;
 
-        // attempt to find both characters in alphabet and save their positions
-        int let1pos = -1, let2pos = -1;
-        for (int i = 0; i < alphabet.length && (let1pos == -1 || let2pos == -1); i++)
-        {
-            if (alphabet[i] == letterPair[0])
-                let1pos = i;
-            else if (alphabet[i] == letterPair[1])
-                let2pos = i;
-        }
+        // attempt to find both characters in alphabet
+        int let1pos = ac.convert(letterPair[0]);
+        int let2pos = ac.convert(letterPair[1]);
         if (let1pos == -1 || let2pos == -1) // verify both characters in alphabet
             return false;
-        if (in_side[let1pos] != out_side[let1pos] || in_side[let2pos] != out_side[let2pos]) // letter already swapped
+        if (wiring[let1pos] != let1pos || wiring[let2pos] != let2pos) // either letter already swapped
             return false;
 
         // insert wire
-        out_side[let1pos] = in_side[let2pos];
-        out_side[let2pos] = in_side[let1pos];
+        wiring[let1pos] = let2pos;
+        wiring[let2pos] = let1pos;
 
         connections.add(new String(letterPair));
 
@@ -206,17 +207,11 @@ public class Plugboard implements Wiring
 
         // connection exists; remove from arrays and LinkedList
         char[] letters = properOrder.toCharArray();
-        int let1pos = -1, let2pos = -1;
-        for (int i = 0; i < alphabet.length && (let1pos == -1 || let2pos == -1); i++)
-        {
-            if (alphabet[i] == letters[0])
-                let1pos = i;
-            else if (alphabet[i] == letters[1])
-                let2pos = i;
-        }
+        int let1pos = ac.convert(letters[0]);
+        int let2pos = wiring[let1pos];
         // reset wires
-        out_side[let1pos] = in_side[let1pos];
-        out_side[let2pos] = in_side[let2pos];
+        wiring[let1pos] = let1pos;
+        wiring[let2pos] = let2pos;
         connections.remove(properOrder);
 
         return true;
@@ -239,11 +234,8 @@ public class Plugboard implements Wiring
      */
     public boolean hasConnection(char letter)
     {
-        for (int i = 0; i < alphabet.length; i++)
-            if (in_side[i] == letter && out_side[i] != letter)
-                return true;
-
-        return false; // default; falls to this if called letter not in the alphabet
+        int temp = ac.convert(letter);
+        return (temp != -1 && wiring[temp] != temp); // if letter in alphabet and doesn't point to itself
     }
 
     /**
@@ -254,17 +246,17 @@ public class Plugboard implements Wiring
      */
     public char findConnectedLetter(char letter)
     {
-        for (int i = 0; i < alphabet.length; i++)
-            if (in_side[i] == letter)
-                return in_side[i] != out_side[i] ? out_side[i] : EMPTY_CHAR; // if different letter, return; else empty
-
-        return EMPTY_CHAR; // if letter not in alphabet
+        int index = ac.convert(letter);
+        if (index == -1 || wiring[index] == index) // no connection or letter not in alphabet
+            return EMPTY_CHAR;
+        else // connection exists
+            return ac.convert(wiring[index]);
     }
 
     /**
      * Method to find the connection pair that contains a letter.  Best if called after hasConnection().
      * @param letter character within the pair to find
-     * @return String of swapping group that contains the letter; empty string if no connection is found.
+     * @return String of swapping group that contains the letter; null if no connection is found.
      */
     public String findConnection(char letter)
     {
@@ -272,7 +264,7 @@ public class Plugboard implements Wiring
             if (c.contains(Character.toString(letter)))
                 return c;
 
-        return EMPTY_STRING; // default; connection does not exist for letter
+        return null; // default; connection does not exist for letter
     }
 
     /**
@@ -282,6 +274,15 @@ public class Plugboard implements Wiring
     public int numberOfConnections()
     {
         return connections.size();
+    }
+
+    /**
+     * Get the alphabet used by the plugboard.
+     * @return char array of alphabet.
+     */
+    public char[] getAlphabet()
+    {
+        return alphabet.clone(); // shallow copy of one-dimensional does not provide reference to original
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -296,12 +297,16 @@ public class Plugboard implements Wiring
      * contact 00, which corresponds to the first letter of the alphabet used by the plugboard.
      *
      * @param contactSignal position of the electrical signal when entering plugboard; index of letter in alphabet
-     * @return position of the electrical signal exiting the plugboard.
+     * @return position of the electrical signal exiting the plugboard; -1 if not valid
      */
     @Override
     public int input(int contactSignal)
     {
-        return 0;
+        try {
+            return wiring[contactSignal];
+        } catch (IndexOutOfBoundsException e) {
+            return -1;
+        }
     }
 
     /**
@@ -311,13 +316,11 @@ public class Plugboard implements Wiring
      * contact 00, which corresponds to the first letter of the alphabet used by the plugboard.
      *
      * @param contactSignal position of the electrical signal when entering plugboard; index of letter in alphabet
-     * @return position of the electrical signal exiting the plugboard.
+     * @return position of the electrical signal exiting the plugboard; -1 if not valid
      */
     @Override
     public int output(int contactSignal)
     {
-        return 0;
+        return input(contactSignal); // since input/output contacts mirror each other
     }
-
-    // TODO change plugboard to a single array where each index (letter) holds where it connects to
 }
