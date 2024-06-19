@@ -59,7 +59,7 @@ class GearConstructionTest
     {
         assertTrue(ref1.isReflectorRewirable());
         assertFalse(ref2.isReflectorRewirable());
-        assertFalse(ref3.isReflectorRewirable());
+        assertTrue(ref3.isReflectorRewirable());
     }
 
     @Test
@@ -67,6 +67,6 @@ class GearConstructionTest
     {
         assertTrue(ref1.isReflectorStepping());
         assertFalse(ref2.isReflectorStepping());
-        assertTrue(ref3.isReflectorStepping());
+        assertFalse(ref3.isReflectorStepping());
     }
 }

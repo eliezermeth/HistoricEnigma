@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Eliezer Meth
- * @version 1<br>
+ * @version 1.0.1<br>
  * Start Date: 2024-05-20<br>
- * Last Modified: 2024-05-29
+ * Last Modified: 2024-06-03
  */
 class PlugboardTest
 {
@@ -24,7 +24,7 @@ class PlugboardTest
     @BeforeAll
     static void setup()
     {
-        if (!AlphabetConverter.alphabetConverterExists())
+        if (!AlphabetConverter.exists())
             AlphabetConverter.createAlphabetConverter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         ac = AlphabetConverter.getAlphabetConverter();
     }

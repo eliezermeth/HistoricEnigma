@@ -1,8 +1,8 @@
 package machine_pieces;
 
+import exceptions.BadKeyException;
 import interfaces.Wiring;
 import utilities.AlphabetConverter;
-import utilities.InvalidKeyException;
 import utilities.Utilities;
 
 import java.util.HashSet;
@@ -42,7 +42,7 @@ public class Plugboard implements Wiring
         alphabet = Utilities.getAzArray();
 
         // get alphabet converter
-        if (!AlphabetConverter.alphabetConverterExists())
+        if (!AlphabetConverter.exists())
             AlphabetConverter.createAlphabetConverter(alphabet);
         ac = AlphabetConverter.getAlphabetConverter();
 
@@ -52,7 +52,7 @@ public class Plugboard implements Wiring
     /**
      * Constructor to create plugboard based on alphabet listed in the string.
      * @param alphabet String of all characters in the alphabet.
-     * @throws InvalidKeyException if duplicate characters are present in the alphabet.
+     * @throws BadKeyException if duplicate characters are present in the alphabet.
      */
     public Plugboard(String alphabet) throws Exception
     {
@@ -62,7 +62,7 @@ public class Plugboard implements Wiring
     /**
      * Constructor to create plugboard based on alphabet listed in the string.
      * @param alphabet character array of all characters in the alphabet.
-     * @throws InvalidKeyException if duplicate characters are present in the alphabet.
+     * @throws BadKeyException if duplicate characters are present in the alphabet.
      */
     public Plugboard (char[] alphabet) throws Exception
     {
@@ -70,12 +70,12 @@ public class Plugboard implements Wiring
         Set<Character> temp = new HashSet<>();
         for (char c : alphabet)
             if (!temp.add(c)) // letter already present
-                throw new InvalidKeyException("Duplicate characters are present in the alphabet.", new Exception());
+                throw new BadKeyException("Duplicate characters are present in the alphabet.", new Exception());
 
         this.alphabet = alphabet; // set plugboard alphabet
 
         // get alphabet converter
-        if (!AlphabetConverter.alphabetConverterExists())
+        if (!AlphabetConverter.exists())
             AlphabetConverter.createAlphabetConverter(alphabet);
         ac = AlphabetConverter.getAlphabetConverter();
 

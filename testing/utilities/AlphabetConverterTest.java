@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Eliezer Meth
- * @version 1<br>
+ * @version 1.0.1<br>
  * Start Date: 2024-05-18<br>
- * Last Modified: 2024-05-19
+ * Last Modified: 2024-06-03
  */
 class AlphabetConverterTest
 {
@@ -41,7 +41,7 @@ class AlphabetConverterTest
     {
         // unable to test if does not exist
 
-        assertTrue(AlphabetConverter.alphabetConverterExists());
+        assertTrue(AlphabetConverter.exists());
     }
 
     @Test

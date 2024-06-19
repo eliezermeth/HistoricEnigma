@@ -10,9 +10,9 @@ import java.util.ArrayList;
  * during its execution.
  *
  * @author Eliezer Meth
- * @version 1<br>
+ * @version 1.0.1<br>
  * Start Date: 2024-05-15<br>
- * Last Modified: 2024-05-17
+ * Last Modified: 2024-06-03
  */
 public class AlphabetConverter
 {
@@ -85,7 +85,7 @@ public class AlphabetConverter
      * Return if an AlphabetConverter has already been instantiated.
      * @return if in instance of AlphabetConverter has been created.
      */
-    public static synchronized boolean alphabetConverterExists()
+    public static synchronized boolean exists()
     {
         return alphabetConverter != null;
     }
