@@ -21,10 +21,12 @@ import java.util.Map;
 public class WiringData
 {
     /**
-     * Array of Enigma versions.
+     * Enum of Enigma versions.<br>
+     * <b>Enigma 1</b> <br>
+     * <b>Enigma M3</b>
      */
-    public static String[] enigmaVersions = new String[]{"Enigma1", "EnigmaM3"};
-    public enum enimgaVersionsEnum {
+    public enum enimgaVersion
+    {
             ENIGMA_1, ENIGMA_M3
     }
 

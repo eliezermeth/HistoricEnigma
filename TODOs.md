@@ -15,3 +15,16 @@ internally.
 
 - ### Plugboard
   - Review PlugboardTest for Exceptions, to be converted to BadKeyExceptions.
+  - Add methods for allowing multiple wires added at once.
+
+- ### All classes in machine_pieces
+  - Remove AlphabetConstructor as a parameter?  It can be gotten via a method call.
+  - Modify to allow letters as input; can use AlphabetConstructor.
+
+- Allow backspace in machine (reset one step back).  Affects rotors.  (Stepping reflector?)
+
+- ### MachineBuilder
+  - Written for 3 rotors; add metadata to WiringData to allow variability.
+  - Expand methods for each element.
+  - After [All classes in machine_pieces], modify to allow letter input.
+  - Rewrite build() method for better options.
