@@ -20,6 +20,7 @@ internally.
 - ### All classes in machine_pieces
   - Remove AlphabetConstructor as a parameter?  It can be gotten via a method call.
   - Modify to allow letters as input; can use AlphabetConstructor.
+  - Also ConstructedFullModel, tests, etc.
 
 - Allow backspace in machine (reset one step back).  Affects rotors.  (Stepping reflector?)
 
