@@ -1,0 +1,404 @@
+{
+  "versions": [
+    {
+      "name": "Enigma A-133",
+      "description": "",
+      "alphabet": "ABCDEFGHIJKLMNOPQRSTUVXYZÅÄÖ",
+      "components": {
+        "plugboard": {
+          "installed": null,
+          "max-connections": 14
+        },
+        "ETW": null,
+        "rotors": [
+          {
+            "name": "I",
+            "wiringOrder": "PSBGÖXQJDHOÄUCFRTEZVÅINLYMKA",
+            "turnover": "Ä",
+            "notch": "G",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "II",
+            "wiringOrder": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+            "turnover": "Ä",
+            "notch": "G",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "III",
+            "wiringOrder": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+            "turnover": "Ä",
+            "notch": "G",
+            "rotatable": true,
+            "stepping": true
+          }
+        ],
+        "reflectors": [
+        ]
+      },
+      "rotorSlots": 3,
+      "_comment": "A-133 was a special variant of the Enigma B, that was delivered to the Swedish SGS on 6 April 1925."
+    },
+    {
+      "name": "Enigma D",
+      "description": "Commercial Enigma A26",
+      "alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "components": {
+        "plugboard": {
+          "installed": true,
+          "max-connections": 13
+        },
+        "ETW": "QWERTZUIOASDFGHJKPYXCVBNML",
+        "rotors": [
+          {
+            "name": "I",
+            "wiringOrder": "LPGSZMHAEOQKVXRFYBUTNICJDW",
+            "turnover": "Y",
+            "notch": "G",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "II",
+            "wiringOrder": "SLVGBTFXJQOHEWIRZYAMKPCNDU",
+            "turnover": "E",
+            "notch": "M",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "III",
+            "wiringOrder": "CJGDPSHKTURAWZXFMYNQOBVLIE",
+            "turnover": "N",
+            "notch": "V",
+            "rotatable": true,
+            "stepping": true
+          }
+        ],
+        "reflectors": [
+          {
+            "name": "",
+            "wiringOrder": "IMETCGFRAYSQBZXWLHKDVUPOJN",
+            "rotatable": false,
+            "stepping": false,
+            "rewirable": false
+          }
+        ]
+      },
+      "rotorSlots": 3,
+      "_comment": "Enigma D should be seen as the main commercial machine, introduced in 1926.  On the Enigma D rotors, the ring with the stepping notch is attached to the rotor body, which means that its position isn't altered when the ring setting is changed.  On all later machines, the ring with the notch is attached to the letter (index) ring."
+    },
+    {
+      "name:": "Enigma I",
+      "versions": [
+        {
+          "name": "Service Enigma",
+          "description": "German Army and Air Force (Wehrmacht, Luftwaffe)",
+          "alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+          "components": {
+            "plugboard": {
+              "installed": true,
+              "max-connections": 13
+            },
+            "ETW": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "rotors": [
+              {
+                "name": "I",
+                "wiringOrder": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+                "turnover": "Q",
+                "notch": "Y",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "II",
+                "wiringOrder": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+                "turnover": "E",
+                "notch": "M",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "III",
+                "wiringOrder": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+                "turnover": "V",
+                "notch": "D",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "IV",
+                "wiringOrder": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+                "turnover": "J",
+                "notch": "R",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "V",
+                "wiringOrder": "VZBRGITYUPSDNHLXAWMJQOFECK",
+                "turnover": "Z",
+                "notch": "H",
+                "rotatable": true,
+                "stepping": true
+              }
+            ],
+            "reflectors": [
+              {
+                "name": "A",
+                "wiringOrder": "EJMZALYXVBWFCRQUONTSPIKHGD",
+                "rotatable": false,
+                "stepping": false,
+                "rewirable": false
+              },
+              {
+                "name": "B",
+                "wiringOrder": "YRUHQSLDPXNGOKMIEBFZCWVJAT",
+                "rotatable": false,
+                "stepping": false,
+                "rewirable": false
+              },
+              {
+                "name": "C",
+                "wiringOrder": "FVPJIAOYEDRZXWGCTKUQSBNMHL",
+                "rotatable": false,
+                "stepping": false,
+                "rewirable": false
+              }
+            ]
+          },
+          "rotorSlots": 3,
+          "_comment": "Enigma I was the main Enigma machine used the German Army/Air Force.  The military machines were the only ones with a plugboard.  UKW-A was only used before WWII."
+        },
+        {
+          "name": "Norway Enigma",
+          "description": "Postwar usage",
+          "alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+          "components": {
+            "plugboard": {
+              "installed": true,
+              "max-connections": 13
+            },
+            "ETW": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "rotors": [
+              {
+                "name": "I",
+                "wiringOrder": "WTOKASUYVRBXJHQCPZEFMDINLG",
+                "turnover": "Q",
+                "notch": "Y",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "II",
+                "wiringOrder": "GJLPUBSWEMCTQVHXAOFZDRKYNI",
+                "turnover": "E",
+                "notch": "M",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "III",
+                "wiringOrder": "JWFMHNBPUSDYTIXVZGRQLAOEKC",
+                "turnover": "V",
+                "notch": "D",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "IV",
+                "wiringOrder": "FGZJMVXEPBWSHQTLIUDYKCNRAO",
+                "turnover": "J",
+                "notch": "R",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "V",
+                "wiringOrder": "HEJXQOTZBVFDASCILWPGYNMURK",
+                "turnover": "Z",
+                "notch": "H",
+                "rotatable": true,
+                "stepping": true
+              }
+            ],
+            "reflectors": [
+              {
+                "name": "",
+                "wiringOrder": "MOWJYPUXNDSRAIBFVLKZGQCHET",
+                "rotatable": false,
+                "stepping": false,
+                "rewirable": false
+              }
+            ]
+          },
+          "rotorSlots": 3,
+          "_comment": "Captured Enigma-I machines used by former Norwegian Police Security Service."
+        },
+        {
+          "name": "Sonder Enigma A-17401 S",
+          "description": "Sondermaschine (special machine)",
+          "alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ ",
+          "components": {
+            "plugboard": {
+              "installed": null,
+              "max-connections": null
+            },
+            "ETW": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            "rotors": [
+              {
+                "name": "I",
+                "wiringOrder": "VEOSIRZUJDQCKGWYPNXAFLTHMB",
+                "turnover": "Q",
+                "notch": "Y",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "II",
+                "wiringOrder": "UEMOATQLSHPKCYFWJZBGVXIDNR",
+                "turnover": "E",
+                "notch": "M",
+                "rotatable": true,
+                "stepping": true
+              },
+              {
+                "name": "III",
+                "wiringOrder": "TZHXMBSIPNURJFDKEQVCWGLAOY",
+                "turnover": "V",
+                "notch": "D",
+                "rotatable": true,
+                "stepping": true
+              }
+            ],
+            "reflectors": [
+              {
+                "name": "",
+                "wiringOrder": "CIAGSNDRBYTPZFULVHEKOQXWJM",
+                "rotatable": false,
+                "stepping": false,
+                "rewirable": false
+              }
+            ]
+          },
+          "rotorSlots": 3,
+          "_comment": "Discovered late 1980s in the house of a former intelligence officer, based on standard Enigma-I with wiring of rotors and UKW changed and marked with the letter 'S'."
+        }
+      ]
+    },
+    {
+      "name": "Enigma M3",
+      "description": "German Navy (Kriegsmarine)",
+      "alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "components": {
+        "plugboard": {
+          "installed": true,
+          "max-connections": 13
+        },
+        "ETW": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "rotors": [
+          {
+            "name": "I",
+            "wiringOrder": "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+            "turnover": "Q",
+            "notch": "Y",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "II",
+            "wiringOrder": "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+            "turnover": "E",
+            "notch": "M",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "III",
+            "wiringOrder": "BDFHJLCPRTXVZNYEIWGAKMUSQO",
+            "turnover": "V",
+            "notch": "D",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "IV",
+            "wiringOrder": "ESOVPZJAYQUIRHXLNFTGKDCMWB",
+            "turnover": "J",
+            "notch": "R",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "V",
+            "wiringOrder": "VZBRGITYUPSDNHLXAWMJQOFECK",
+            "turnover": "Z",
+            "notch": "H",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "VI",
+            "wiringOrder": "JPGVOUMFYQBENHZRDKASXLICTW",
+            "turnover": "ZM",
+            "notch": "HU",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "VII",
+            "wiringOrder": "NZJHGRCXMYSWBOUFAIVLPEKQDT",
+            "turnover": "ZM",
+            "notch": "HU",
+            "rotatable": true,
+            "stepping": true
+          },
+          {
+            "name": "VIII",
+            "wiringOrder": "FKQHTLXOCBJSPDZRAMEWNIUYGV",
+            "turnover": "ZM",
+            "notch": "HU",
+            "rotatable": true,
+            "stepping": true
+          }
+        ],
+        "reflectors": [
+          {
+            "name": "A",
+            "wiringOrder": "EJMZALYXVBWFCRQUONTSPIKHGD",
+            "rotatable": false,
+            "stepping": false,
+            "rewirable": false
+          },
+          {
+            "name": "B",
+            "wiringOrder": "YRUHQSLDPXNGOKMIEBFZCWVJAT",
+            "rotatable": false,
+            "stepping": false,
+            "rewirable": false
+          },
+          {
+            "name": "C",
+            "wiringOrder": "FVPJIAOYEDRZXWGCTKUQSBNMHL",
+            "rotatable": false,
+            "stepping": false,
+            "rewirable": false
+          },
+          {
+            "name": "D",
+            "wiringOrder": "",
+            "rotatable": false,
+            "stepping": false,
+            "rewirable": true
+          }
+        ]
+      },
+      "rotorSlots": 3,
+      "_comment": "Enigma M1, M2, and M3 wre used by the Navy, and were functionally identical so referred to as M3.  Rotors I to V are identical to those of Enigma I, as are UKW B and C.  Also compatible with Enigma M4 (when 4th rotor of the M4 is set to position 'A'."
+    }
+  ],
+  "_comment": "TODO: M3+, see UKW-D"
+}

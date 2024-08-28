@@ -1,0 +1,173 @@
+---
+# Enigma versions
+versions:
+  # Enigma A-133
+  - name: "A-133"
+    description: ""
+    alphabet: "ABCDEFGHIJKLMNOPQRSTUVXYZÅÄÖ"
+    components:
+      plugboard:
+        installed: null
+        max-connections: 14
+      ETW: null
+      rotors:
+        - name: "I"
+          wiring: "PSBGÖXQJDHOÄUCFRTEZVÅINLYMKA"
+          turnover: "Ä"
+          notch: "G"
+          rotatable: true
+          stepping: true
+        - name: "II"
+          wiring: "AJDKSIRUXBLHWTMCQGZNPYFVOE"
+          turnover: "Ä"
+          notch: "G"
+          rotatable: true
+          stepping: true
+      reflectors: null
+    rotorSlots: 3
+    comments: "A-133 was a special variant of the Enigma B that was delivered to the Swedish SGS on 6 April 1925."
+  # Enigma D
+  - name: "D"
+    description: "Commercial Enigma A26"
+    alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    components:
+      plugboard:
+        installed: true
+        max-connections: 13
+      ETW: "QWERTZUIOASDFGHJKPYXCVBNML"
+      rotors:
+        - name: "I"
+          wiring: "LPGSZMHAEOQKVXRFYBUTNICJDW"
+          turnover: "Y"
+          notch: "G"
+          rotatable: true
+          stepping: true
+        - name: "II"
+          wiring: "SLVGBTFXJQOHEWIRZYAMKPCNDU"
+          turnover: "E"
+          notch: "M"
+          rotatable: true
+          stepping: true
+        - name: "III"
+          wiring: "CJGDPSHKTURAWZXFMYNQOBVLIE"
+          turnover: "N"
+          notch: "V"
+          rotatable: true
+          stepping: true
+        reflectors:
+          - name: "UKW"
+            wiring: "IMETCGFRAYSQBZXWLHKDVUPOJN"
+            rotatable: false
+            stepping: false
+            rewirable: false
+      rotorSlots: 3
+      comments: "Enigma D should be seen as the main commercial machine, introduced in 1926.  On the Enigma D rotors, the ring with the stepping notch is attached to the rotor body, which means that its position isn't altered when the ring setting is changed.  On all later machines, the ring with the notch is attached to the letter (index) ring."
+  # Enigma I
+  - name: "I"
+    versions:
+      # Service Enigma
+      - name: "Service Enigma"
+        description: "German Army and Air Force (Wehrmacht, Luftwaffe)"
+        alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        components:
+          plugboard:
+            installed: true
+            max-connections: 13
+          ETW: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+          rotors:
+            - name: "I"
+              wiring: "EKMFLGDQVZNTOWYHXUSPAIBRCJ"
+              turnover: "Q"
+              notch: "Y"
+              rotatable: true
+              stepping: true
+            - name: "II"
+              wiring: "AJDKSIRUXBLHWTMCQGZNPYFVOE"
+              turnover: "E"
+              notch: "M"
+              rotatable: true
+              stepping: true
+            - name: "III"
+              wiring: "BDFHJLCPRTXVZNYEIWGAKMUSQO"
+              turnover: "V"
+              notch: "D"
+              rotatable: true
+              stepping: true
+            - name: "IV"
+              wiring: "ESOVPZJAYQUIRHXLNFTGKDCMWB"
+              turnover: "J"
+              notch: "R"
+              rotatable: true
+              stepping: true
+            - name: "V"
+              wiring: "VZBRGITYUPSDNHLXAWMJQOFECK"
+              turnover: "Z"
+              notch: "H"
+              rotatable: true
+              stepping: true
+          reflectors:
+            - name: "A"
+              wiring: "EJMZALYXVBWFCRQUONTSPIKHGD"
+              rotatable: false
+              stepping: false
+              rewirable: false
+            - name: "B"
+              wiring: "YRUHQSLDPXNGOKMIEBFZCWVJAT"
+              rotatable: false
+              stepping: false
+              rewirable: false
+            - name: "C"
+              wiring: "FVPJIAOYEDRZXWGCTKUQSBNMHL"
+              rotatable: false
+              stepping: false
+              rewirable: false
+        rotorSlots: 3
+        comments: "Enigma I was the main Enigma machine used by the German Army/Air Force.  The military machines were the only ones with a plugboard.  UKW-A was only used before WWII."
+      # Norway Enigma
+      - name: "Norway Enigma"
+        description: "Postwar usage"
+        alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        components:
+          plugboard:
+            installed: true
+            max-connections: 13
+          ETW: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+          rotors:
+            - name: "I"
+              wiring: "WTOKASUYVRBXJHQCPZEFMDINLG"
+              turnover: "Q"
+              notch: "Y"
+              rotatable: true
+              stepping: true
+            - name: "II"
+              wiring: "GJLPUBSWEMCTQVHXAOFZDRKYNI"
+              turnover: "E"
+              notch: "M"
+              rotatable: true
+              stepping: true
+            - name: "III"
+              wiring: "JWFMHNBPUSDYTIXVZGRQLAOEKC"
+              turnover: "V"
+              notch: "D"
+              rotatable: true
+              stepping: true
+            - name: "IV"
+              wiring: "FGZJMVXEPBWSHQTLIUDYKCNRAO"
+              turnover: "J"
+              notch: "R"
+              rotatable: true
+              stepping: true
+            - name: "V"
+              wiring: "HEJXQOTZBVFDASCILWPGYNMURK"
+              turnover: "Z"
+              notch: "H"
+              rotatable: true
+              stepping: true
+          reflectors:
+            - name: "UKW"
+              wiring: "MOWJYPUXNDSRAIBFVLKZGQCHET"
+              rotatable: false
+              stepping: false
+              rewirable: false
+        rotorSlots: 3
+        comments: "Used by former Norwegien Police Security Service, Overvaakingspolitiet"
