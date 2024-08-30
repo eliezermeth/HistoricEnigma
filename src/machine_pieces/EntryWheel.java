@@ -2,7 +2,7 @@ package machine_pieces;
 
 import exceptions.BadKeyException;
 import interfaces.Wiring;
-import utilities.AlphabetConverter;
+import resources.AlphabetConverter;
 
 import java.util.HashMap;
 import java.util.HashSet;

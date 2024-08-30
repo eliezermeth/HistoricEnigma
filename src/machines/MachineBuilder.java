@@ -1,8 +1,8 @@
 package machines;
 
 import machine_pieces.*;
-import utilities.AlphabetConverter;
-import utilities.WiringData;
+import resources.AlphabetConverter;
+import resources.WiringData;
 
 import java.util.Map;
 import java.util.Set;

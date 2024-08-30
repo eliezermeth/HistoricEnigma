@@ -1,7 +1,7 @@
 package machine_pieces;
 
 import org.junit.jupiter.api.Test;
-import utilities.Utilities;
+import resources.Utilities;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

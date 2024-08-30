@@ -7,7 +7,7 @@ import machine_pieces.EntryWheel;
 import machine_pieces.Plugboard;
 import machine_pieces.Reflector;
 import machine_pieces.Rotor;
-import utilities.AlphabetConverter;
+import resources.AlphabetConverter;
 
 /**
  * Class to hold a fully constructed Enigma model, be it civilian or military.  Contains all pieces that can be used in

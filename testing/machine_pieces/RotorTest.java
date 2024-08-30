@@ -1,7 +1,7 @@
 package machine_pieces;
 
 import org.junit.jupiter.api.Test;
-import utilities.WiringData;
+import resources.WiringData;
 
 import java.util.ArrayList;
 import java.util.Map;

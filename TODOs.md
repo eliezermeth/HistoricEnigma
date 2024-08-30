@@ -29,3 +29,6 @@ internally.
   - Expand methods for each element.
   - After [All classes in machine_pieces], modify to allow letter input.
   - Rewrite build() method for better options.
+
+- ### VersionInformationCompiler
+  - Continue after change most classes to use correct alphabet.

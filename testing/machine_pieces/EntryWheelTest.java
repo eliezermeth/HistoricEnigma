@@ -2,7 +2,7 @@ package machine_pieces;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import utilities.AlphabetConverter;
+import resources.AlphabetConverter;
 
 import static org.junit.jupiter.api.Assertions.*;
 

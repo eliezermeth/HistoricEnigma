@@ -1,9 +1,8 @@
 package machine_pieces;
 
 import org.junit.jupiter.api.Test;
-import utilities.WiringData;
+import resources.WiringData;
 
-import java.sql.Ref;
 import java.util.HashMap;
 import java.util.Map;
 

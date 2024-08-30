@@ -2,8 +2,8 @@ package machine_pieces;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import utilities.AlphabetConverter;
-import utilities.Utilities;
+import resources.AlphabetConverter;
+import resources.Utilities;
 
 import java.util.LinkedList;
 

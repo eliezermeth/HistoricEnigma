@@ -1,6 +1,6 @@
 package machine_pieces;
 
-import utilities.Utilities;
+import resources.Utilities;
 
 import java.util.ArrayList;
 

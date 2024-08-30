@@ -3,10 +3,9 @@ package machines;
 import machine_pieces.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import utilities.AlphabetConverter;
-import utilities.WiringData;
+import resources.AlphabetConverter;
+import resources.WiringData;
 
-import java.sql.Ref;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;

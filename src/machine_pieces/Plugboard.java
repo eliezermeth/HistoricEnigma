@@ -2,8 +2,8 @@ package machine_pieces;
 
 import exceptions.BadKeyException;
 import interfaces.Wiring;
-import utilities.AlphabetConverter;
-import utilities.Utilities;
+import resources.AlphabetConverter;
+import resources.Utilities;
 
 import java.util.HashSet;
 import java.util.LinkedList;
