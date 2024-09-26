@@ -51,17 +51,16 @@ public class EntryWheel implements Wiring
     /**
      * Constructor for Entry Wheel.  Requires AlphabetConverter and ETWsequence.  ETWsequence defines how the wirings
      * are connected from the keyboard to the rotor assembly.
-     * @param ac AlphabetConverter.
      * @param seq ETWsequence of QWERTY, ABCDEF, or CUSTOM.  CUSTOM requires the wiring to be set later.
      * @throws IllegalStateException if AlphabetConverter has not been instantiated.
      * @throws BadKeyException if wiring sequences do not match AlphabetConverter alphabet; only occurs if
      * AlphabetConverter contains nonstandard 26-letter English alphabet (uppercase) and non-CUSTOM selected
      */
-    public EntryWheel(AlphabetConverter ac, ETWsequence seq) throws IllegalStateException, BadKeyException
+    public EntryWheel(ETWsequence seq) throws IllegalStateException, BadKeyException
     {
         if (!AlphabetConverter.exists())
             throw new IllegalStateException("AlphabetConverter must first be instantiated.");
-        this.ac = ac;
+        this.ac = AlphabetConverter.getAlphabetConverter();
 
         if (seq == ETWsequence.ABCDE)
             set(abc, abc);

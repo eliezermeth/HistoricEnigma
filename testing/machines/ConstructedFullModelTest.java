@@ -33,7 +33,7 @@ class ConstructedFullModelTest
             AlphabetConverter.createAlphabetConverter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         ac = AlphabetConverter.getAlphabetConverter();
 
-        EntryWheel entryWheel = new EntryWheel(ac, EntryWheel.ETWsequence.ABCDE); // A -> A
+        EntryWheel entryWheel = new EntryWheel(EntryWheel.ETWsequence.ABCDE); // A -> A
 
         Plugboard plugboard = new Plugboard(); // no connections
 

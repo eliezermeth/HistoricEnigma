@@ -35,16 +35,18 @@ public class Plugboard implements Wiring
     private AlphabetConverter ac;
 
     /**
-     * Default constructor; initialized plugboard with 26-letter English alphabet and no connections.
+     * Default constructor; initializes plugboard with alphabet from AlphabetConverter and no connections.
+     * @throws IllegalStateException if AlphabetConverter not instantiated.
      */
-    public Plugboard()
+    public Plugboard() throws IllegalStateException
     {
-        alphabet = Utilities.getAzArray();
-
-        // get alphabet converter
+        // get alphabet converter; if does not exist, throw error
         if (!AlphabetConverter.exists())
-            AlphabetConverter.createAlphabetConverter(alphabet);
+            throw new IllegalStateException("AlphabetConverter must first be instantiated.");
         ac = AlphabetConverter.getAlphabetConverter();
+
+        // set alphabet
+        alphabet = ac.getAlphabet();
 
         resetPlugboard();
     }
@@ -63,20 +65,21 @@ public class Plugboard implements Wiring
      * Constructor to create plugboard based on alphabet listed in the string.
      * @param alphabet character array of all characters in the alphabet.
      * @throws BadKeyException if duplicate characters are present in the alphabet.
+     * @throws IllegalStateException if AlphabetConverter not instantiated
      */
-    public Plugboard (char[] alphabet) throws Exception
+    public Plugboard (char[] alphabet) throws BadKeyException
     {
         // test if duplicate letters
         Set<Character> temp = new HashSet<>();
         for (char c : alphabet)
             if (!temp.add(c)) // letter already present
-                throw new BadKeyException("Duplicate characters are present in the alphabet.", new Exception());
+                throw new BadKeyException("Duplicate characters are present in the alphabet.");
 
         this.alphabet = alphabet; // set plugboard alphabet
 
         // get alphabet converter
         if (!AlphabetConverter.exists())
-            AlphabetConverter.createAlphabetConverter(alphabet);
+            throw new IllegalStateException("AlphabetConverter must first be instantiated.");
         ac = AlphabetConverter.getAlphabetConverter();
 
         resetPlugboard();

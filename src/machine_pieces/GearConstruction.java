@@ -1,5 +1,6 @@
 package machine_pieces;
 
+import resources.AlphabetConverter;
 import resources.Utilities;
 
 import java.util.ArrayList;
@@ -8,9 +9,9 @@ import java.util.ArrayList;
  * This class is instantiated to create an unmodified rotor or reflector in its most basic sense.
  *
  * @author Eliezer Meth
- * @version 3<br>
+ * @version 3.1<br>
  * Start Date: 2022-02-22<br>
- * Last Modified: 2024-04-04
+ * Last Modified: 2024-09-03
  */
 public class GearConstruction
 {
@@ -64,7 +65,10 @@ public class GearConstruction
     private void populateWiring(String wiring)
     {
         // populate letters (front)
-        letters = Utilities.getAzArrayList();
+        char[] temp = AlphabetConverter.getAlphabetConverter().getAlphabet(); // TODO ensure AlphabetConverter instantiated?
+        letters = new ArrayList<>(temp.length);
+        for (char c : temp)
+            letters.add(c);
 
         // populate wirings (back)
         char[] characters = wiring.toCharArray();

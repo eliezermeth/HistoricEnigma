@@ -30,8 +30,8 @@ class EntryWheelTest
             AlphabetConverter.createAlphabetConverter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         ac = AlphabetConverter.getAlphabetConverter();
 
-        abc = new EntryWheel(ac, EntryWheel.ETWsequence.ABCDE);
-        qwe = new EntryWheel(ac, EntryWheel.ETWsequence.QWERTY);
+        abc = new EntryWheel(EntryWheel.ETWsequence.ABCDE);
+        qwe = new EntryWheel(EntryWheel.ETWsequence.QWERTY);
 
     }
 
@@ -47,7 +47,7 @@ class EntryWheelTest
         assertFalse(qwe.set(stringQWE, stringQWE));
 
         // custom
-        EntryWheel custom = new EntryWheel(ac, EntryWheel.ETWsequence.CUSTOM);
+        EntryWheel custom = new EntryWheel(EntryWheel.ETWsequence.CUSTOM);
         assertTrue(custom.set(stringABC, stringQWE));
         // also test if wirings placed in correct place
         String[] actual = custom.getWirings();
@@ -63,7 +63,7 @@ class EntryWheelTest
         assertEquals(EntryWheel.ETWsequence.ABCDE, abc.getSetting());
         assertEquals(EntryWheel.ETWsequence.QWERTY, qwe.getSetting());
 
-        EntryWheel temp = new EntryWheel(ac, EntryWheel.ETWsequence.CUSTOM);
+        EntryWheel temp = new EntryWheel(EntryWheel.ETWsequence.CUSTOM);
         assertEquals(EntryWheel.ETWsequence.CUSTOM, temp.getSetting());
     }
 

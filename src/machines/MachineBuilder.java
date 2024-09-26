@@ -55,14 +55,14 @@ public class MachineBuilder
         {
             case ENIGMA_1:
                 machineComponents = WiringData.Enigma1();
-                entryWheel = new EntryWheel(ac, EntryWheel.ETWsequence.ABCDE);
+                entryWheel = new EntryWheel(EntryWheel.ETWsequence.ABCDE);
                 plugboardModifiable = true;
                 rotors = new Rotor[3]; // initialize array to proper length; TODO
                 availableRotors = machineComponents.get("rotor").keySet();
                 break;
             case ENIGMA_M3:
                 machineComponents = WiringData.EnigmaM3();
-                entryWheel = new EntryWheel(ac, EntryWheel.ETWsequence.ABCDE);
+                entryWheel = new EntryWheel(EntryWheel.ETWsequence.ABCDE);
                 plugboardModifiable = true;
                 rotors = new Rotor[3]; // initialize array to proper length, 3 or 4?; TODO
                 availableRotors = machineComponents.get("rotor").keySet();
@@ -156,7 +156,7 @@ public class MachineBuilder
     {
         // Entry wheel
         if (entryWheel == null)
-            entryWheel = new EntryWheel(ac, EntryWheel.ETWsequence.ABCDE);
+            entryWheel = new EntryWheel(EntryWheel.ETWsequence.ABCDE);
 
         // Plugboard
         if (plugboard == null)

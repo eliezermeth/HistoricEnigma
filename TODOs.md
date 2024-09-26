@@ -16,6 +16,8 @@ internally.
 - ### Plugboard
   - Review PlugboardTest for Exceptions, to be converted to BadKeyExceptions.
   - Add methods for allowing multiple wires added at once.
+  - Create lock method to prevent more wirings added.
+  - Add max connections possible within plugboard.
 
 - ### All classes in machine_pieces
   - Remove AlphabetConstructor as a parameter?  It can be gotten via a method call.
