@@ -1,4 +1,4 @@
-#**Historic Enigma**
+# **Historic Enigma**
 
 This project is to simulate an Enigma machine such as the one used by the Germans in WWII.
 
